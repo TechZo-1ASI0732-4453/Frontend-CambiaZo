@@ -1,9 +1,17 @@
-import {catchError, throwError} from "rxjs";
-import {HttpErrorResponse} from '@angular/common/module.d-CnjH8Dlt';
+import {HttpErrorResponse, HttpInterceptorFn} from '@angular/common/http';
+import {catchError, throwError} from 'rxjs';
 
-export const ErroResponseInterceptor = (req, next) =>
-  next(req).pipe(catchError(handleErrorResponse));
 
-function handleErrorResponse(error: HttpErrorResponse) {
-  return throwError(error);
-}
+export const ErrorInterceptor: HttpInterceptorFn = (req,
+next)=>{
+  return next(req).pipe(
+    catchError((error: HttpErrorResponse)=> {
+      if(error.status === 400){
+        console.log('Bad request');
+      }else if(error.status === 500){
+        console.log('Internal error');
+      }
+      return throwError(()=> error.error.message);
+    })
+  )
+};
