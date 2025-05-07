@@ -1,0 +1,43 @@
+<section class="w-full h-screen flex">
+
+
+  <div class="w-1/2">
+    <div class="flex flex-col">
+      <img src="logo-2.webp" alt="">
+    </div>
+    <h1>Iniciar sesion</h1>
+    <button nz-button (click)="googleSignIn()">GOOGLE INICIAR SESION</button>
+    <form [nzLayout]="'vertical'" nz-form [formGroup]="signInForm.form" class="flex flex-col gap-1 !p-4 sm:!p-0">
+      <nz-form-item>
+        <nz-form-label nzFor="signInEmail">Email:</nz-form-label>
+        <nz-form-control nzErrorTip="El email es requerido.">
+          <input id="signInEmail" placeholder="Email" nz-input  formControlName="username" type="text"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="signInPassword">Contraseña:</nz-form-label>
+        <nz-form-control nzErrorTip="La contraseña es requerida.">
+          <nz-input-group [nzSuffix]="suffixTemplate">
+            <input
+              [type]="passwordVisible ? 'text' : 'password'"
+              nz-input
+              placeholder="input password"
+              formControlName="password"
+            />
+          </nz-input-group>
+          <ng-template #suffixTemplate>
+            <nz-icon
+              class="ant-input-password-icon"
+              [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+              (click)="passwordVisible = !passwordVisible"
+            />
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <button nz-button (click)="onClassicSignIn()">Iniciar sesion</button>
+  </div>
+  <div class="w-1/2 !h-full">
+    <img class="w-full h-full object-cover" src="login-bg.webp" alt="">
+  </div>
+</section>
