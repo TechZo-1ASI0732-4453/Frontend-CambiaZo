@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api/v2',
+  apiUrl: 'https://cambiazo-backend-bjdkd7hhgqa8gygw.eastus-01.azurewebsites.net/api/v2',
   firebase: {
     apiKey: "AIzaSyC1DjypqSfivN6N6ch-Kv6YVFupAF0inO8",
     authDomain: "appcambiazo.firebaseapp.com",
