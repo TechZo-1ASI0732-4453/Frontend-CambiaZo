@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080/api/v2'
+  apiUrl: 'https://cambiazo-backend-bjdkd7hhgqa8gygw.eastus-01.azurewebsites.net/api/v2'
 }
