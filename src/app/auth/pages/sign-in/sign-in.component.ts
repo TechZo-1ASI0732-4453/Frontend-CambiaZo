@@ -6,7 +6,8 @@ import {SignUpUserDto} from '../../dtos/signUpUser.dto';
 import { SignInForm } from '../../forms/sign-in.form';
 import { SHARED_IMPORTS } from '../../../shared';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
-import {FooterContentComponent} from '../../component/footer-content/footer-content.component';
+import { FooterContentComponent } from '../../components/footer-content/footer-content.component';
+
 
 
 @Component({

@@ -1,87 +1,91 @@
 
-<section class="w-full h-screen flex">
+<section class="w-full layout-signIn">
+  <div class="w-full flex">
+    <div class="w-full py-5 md:py-0 md:w-1/2 flex flex-col justify-center">
 
-  <div class="w-full md:w-1/2 flex flex-col justify-center">
-
-    <div class="  border-red flex flex-col h-auto mx-[10%] sm:mx-[20%] justify-center gap-4 items-center">
-    <div class="flex flex-col">
-      <img src="logo-2.webp" class="w-full h-auto" alt="">
-    </div>
-
-      <label nzFor="signInEmail" class="!p-1 w"><span class="text-[26px] font-bold">Iniciar Sesión</span></label>
-
-      <button (click)="googleSignIn()" class="w-full flex justify-center border px-4 py-3 rounded-full font-bold border-gray-300">
-      <img src="logo-google.webp" class="w-5 h-5 mr-2">
-      Iniciar Sesión con Google
-    </button>
-
-      <div class="w-full flex items-center gap-2">
-        <hr class="flex-grow border border-gray-300" />
-        <span class="text-[11px]   text-gray-400">o inicia sesión con correo</span>
-        <hr class="flex-grow border border-gray-300" />
+      <div class="  border-red flex flex-col h-auto mx-[10%] sm:mx-[20%] justify-center gap-4 items-center">
+      <div class="flex flex-col">
+        <img src="logo-2.webp" class="w-full h-auto" alt="">
       </div>
 
-      <form [nzLayout]="'vertical'" nz-form [formGroup]="signInForm.form" class="flex flex-col gap-1 !p-0">
-      <nz-form-item >
-        <nz-form-label nzFor="signInEmail" class="!pb-1"><span class="text-[16px] font-bold">Email</span></nz-form-label>
-        <nz-form-control nzErrorTip="El email es requerido.">
-          <input class="h-[45px] !rounded-lg border" id="signInEmail" placeholder="Email" nz-input  formControlName="username" type="text"/>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
+        <label nzFor="signInEmail" class="!p-1 w"><span class="text-[26px] font-bold">Iniciar Sesión</span></label>
 
-            <nz-form-label id="label-password"  nzFor="signInPassword" class="!pb-0 w-full" >
-              <div class="flex w-full justify-between">
-                <span class="text-[16px] font-bold">
-                 Contraseña
-                </span>
-                <span class="text-[#FFD146] text-[12px] flex items-center cursor-pointer flex-shrink-0">
-                 ¿No recuerdas la contraseña?
-                </span>
-              </div>
-            </nz-form-label>
+        <button (click)="googleSignIn()" class="w-full flex justify-center border px-4 py-3 rounded-full font-bold border-gray-300">
+        <img src="logo-google.webp" class="w-5 h-5 mr-2">
+        Iniciar Sesión con Google
+      </button>
+
+        <div class="w-full flex items-center gap-2">
+          <hr class="flex-grow border border-gray-300" />
+          <span class="text-[11px]   text-gray-400">o inicia sesión con correo</span>
+          <hr class="flex-grow border border-gray-300" />
+        </div>
+
+        <form [nzLayout]="'vertical'" nz-form [formGroup]="signInForm.form" class="flex flex-col gap-1 !p-0">
+        <nz-form-item >
+          <nz-form-label nzFor="signInEmail" class="!pb-1"><span class="text-[16px] font-bold">Email</span></nz-form-label>
+          <nz-form-control nzErrorTip="El email es requerido.">
+            <input class="h-[45px] !rounded-lg border" id="signInEmail" placeholder="Email" nz-input  formControlName="username" type="text"/>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+
+              <nz-form-label id="label-password"  nzFor="signInPassword" class="!pb-0 w-full" >
+                <div class="flex w-full justify-between">
+                  <span class="text-[16px] font-bold">
+                  Contraseña
+                  </span>
+                  <span class="text-[#FFD146] text-[12px] flex items-center cursor-pointer flex-shrink-0">
+                  ¿No recuerdas la contraseña?
+                  </span>
+                </div>
+              </nz-form-label>
 
 
-        <nz-form-control nzErrorTip="La contraseña es requerida." >
-          <nz-input-group [nzSuffix]="suffixTemplate" class=" h-[45px] !rounded-lg border">
-            <input
-              [type]="passwordVisible ? 'text' : 'password'"
-              nz-input
-              placeholder="Contraseña"
-              formControlName="password"
-            />
-          </nz-input-group>
-          <ng-template #suffixTemplate>
-            <nz-icon
-              class="ant-input-password-icon"
-              [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
-              (click)="passwordVisible = !passwordVisible"
-            />
-          </ng-template>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
+          <nz-form-control nzErrorTip="La contraseña es requerida." >
+            <nz-input-group [nzSuffix]="suffixTemplate" class=" h-[45px] !rounded-lg border">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                nz-input
+                placeholder="Contraseña"
+                formControlName="password"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <nz-icon
+                class="ant-input-password-icon"
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              />
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
 
-    <button  class=" w-full bg-[#FFD146] text-white px-4 py-3 rounded-full font-bold max-w-full" (click)="onClassicSignIn()">
-     Iniciar sesion
-    </button>
+      <button  class=" w-full bg-[#FFD146] text-white px-4 py-3 rounded-full font-bold max-w-full" (click)="onClassicSignIn()">
+      Iniciar sesion
+      </button>
 
-      <div class="flex  w-full justify-center gap-2">
-        <span class="text-[16px] font-bold">
-         ¿No tienes una cuenta?
-        </span>
-        <span class="text-[#FFD146] text-[16px] font-bold flex items-center cursor-pointer ">
-         Crea tu cuenta
-        </span>
+        <div class="flex  w-full justify-center gap-2">
+          <span class="text-[16px] font-bold">
+          ¿No tienes una cuenta?
+          </span>
+          <span class="text-[#FFD146] text-[16px] font-bold flex items-center cursor-pointer ">
+          Crea tu cuenta
+          </span>
+        </div>
+
+
       </div>
-
-
     </div>
+
+    <div class="w-1/2 md:block !h-full hidden">
+      <img class="w-full h-full object-cover" src="login-bg.webp" alt="">
+    </div>
+
   </div>
 
-  <div class=" w-1/2 md:block !h-full hidden">
-    <img class="w-full h-full object-cover" src="login-bg.webp" alt="">
-  </div>
+  <app-footer-content></app-footer-content>
 </section>
-<app-footer-content></app-footer-content>
+
 
