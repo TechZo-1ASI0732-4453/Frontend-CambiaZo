@@ -8,13 +8,14 @@ import { SHARED_IMPORTS } from '../../../shared';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
 import { EyeInvisibleOutline, EyeOutline } from '@ant-design/icons-angular/icons';
 
+
 @Component({
   selector: 'app-sign-in',
   imports: [
     FormsModule,
     SHARED_IMPORTS,
-    NzIconModule
-  ],
+    NzIconModule,
+],
   providers: [SignInForm],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
@@ -23,11 +24,9 @@ export class SignInComponent {
   
   private googleAuthService: GoogleAuthService=inject(GoogleAuthService);
   private classicAuthService: AuthService=inject(AuthService);
-
-  constructor(public readonly signInForm:SignInForm) {}
+  public readonly signInForm: SignInForm=inject(SignInForm);
 
   passwordVisible:boolean=false;
-
 
   onClassicSignIn(){
     if(this.signInForm.isValid()){
