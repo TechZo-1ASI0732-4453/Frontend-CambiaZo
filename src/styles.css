@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @import 'ng-zorro-antd/ng-zorro-antd.css';
+
 @theme{
   --cb-yellow: #FFD146;
 }
+
 
 *{
   box-sizing: border-box;
@@ -11,6 +13,11 @@
 body{
   margin:0;
 }
+
+p{
+  margin:0;
+}
+
 
 .layout {
   display: grid;
