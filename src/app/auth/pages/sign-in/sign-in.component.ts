@@ -6,28 +6,31 @@ import {SignUpUserDto} from '../../dtos/signUpUser.dto';
 import { SignInForm } from '../../forms/sign-in.form';
 import { SHARED_IMPORTS } from '../../../shared';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
-import { EyeInvisibleOutline, EyeOutline } from '@ant-design/icons-angular/icons';
+import { FooterContentComponent } from '../../components/footer-content/footer-content.component';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-sign-in',
   imports: [
+    FooterContentComponent,
     FormsModule,
     SHARED_IMPORTS,
-    NzIconModule
-  ],
+    NzIconModule,
+],
   providers: [SignInForm],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
-  
+
   private googleAuthService: GoogleAuthService=inject(GoogleAuthService);
   private classicAuthService: AuthService=inject(AuthService);
-
-  constructor(public readonly signInForm:SignInForm) {}
+  public readonly signInForm: SignInForm=inject(SignInForm);
+  private router:Router = inject(Router);
 
   passwordVisible:boolean=false;
-
 
   onClassicSignIn(){
     if(this.signInForm.isValid()){
@@ -51,6 +54,8 @@ export class SignInComponent {
 
         this.classicAuthService.signIn(email, password).subscribe({
           next: (response) => {
+            localStorage.setItem('token', response.token);
+            this.router.navigate(['/home']);
             console.log('Login successful', response);
           },
           error: (error) => {
@@ -76,6 +81,8 @@ export class SignInComponent {
       next: (response) => {
         this.classicAuthService.signIn(signUpUserDto.username, signUpUserDto.password).subscribe({
           next: (loginResponse) => {
+            localStorage.setItem('token', response.token);
+            this.router.navigate(['/home']);
             console.log('Account created and logged in successfully', loginResponse);
           },
           error: (loginError) => {
@@ -93,6 +100,8 @@ export class SignInComponent {
   signIn(email:string, password:string){
     this.classicAuthService.signIn(email,password).subscribe({
       next: (response)=>{
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/home']);
         console.log('success: ', response);
       },
       error: ()=>{
