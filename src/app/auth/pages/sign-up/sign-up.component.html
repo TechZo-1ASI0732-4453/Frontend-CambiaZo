@@ -1,1 +1,124 @@
-<p>sign-up works!</p>
+<section class="w-full layout-signUp">
+    <div class="w-full flex">
+        <div class="w-full py-5 md:py-2 md:w-1/2 flex flex-col justify-center">
+            <div class="border-red flex flex-col h-auto mx-[10%] sm:mx-[20%] justify-center gap-4 items-center">
+                <div class="flex flex-col">
+                    <img src="logo-2.webp" class="w-[315px] h-auto" alt="">
+                </div>
+
+                <label nzFor="signInEmail" class="!p-1 w"><span class="text-[26px] font-bold">Registrarse</span></label>
+
+                <button (click)="onSignUpWithGoogle()"
+                    class="w-full cursor-pointer flex justify-center border px-4 py-2 rounded-full font-bold border-gray-300">
+                    <img src="logo-google.webp" class="w-5 h-5 mr-2">
+                    Registrarse con Google
+                </button>
+
+                <div class="w-full flex items-center gap-2">
+                    <hr class="flex-grow border border-gray-300" />
+                    <span class="text-[11px]   text-gray-400">o inicia sesión con correo</span>
+                    <hr class="flex-grow border border-gray-300" />
+                </div>
+
+                <form [nzLayout]="'vertical'" nz-form [formGroup]="signUpForm.form" class="flex flex-col gap-1 !p-0">
+                    <nz-form-item>
+                        <nz-form-label nzFor="signUpName" class="!pb-1"><span
+                                class="text-[16px] font-bold">Nombre</span></nz-form-label>
+                        <nz-form-control nzErrorTip="El nombre es requerido.">
+                            <input class="h-[45px] !rounded-lg border" id="signUpName" placeholder="Nombre" nz-input
+                                formControlName="name" type="text"  />
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label nzFor="signInPassword" class="!pb-1">
+                            <span class="font-bold text-[16px]">Contraseña</span>
+                        </nz-form-label>
+
+
+                        <nz-form-control nzErrorTip="La contraseña es requerida.">
+                            <nz-input-group [nzSuffix]="suffixTemplate" class=" h-[45px] !rounded-lg border">
+                                <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Contraseña"
+                                    formControlName="password" (ngModelChange)="checkPasswordMatch()"/>
+                            </nz-input-group>
+                            <ng-template #suffixTemplate>
+                                <nz-icon class="ant-input-password-icon"
+                                    [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                    (click)="passwordVisible = !passwordVisible" />
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label nzFor="signInRepeatPassword" class="!pb-1">
+                            <span class="font-bold text-[16px]">Repetir contraseña</span>
+                        </nz-form-label>
+
+
+                        <nz-form-control nzErrorTip="Repita la contraseña">
+                            <nz-input-group [nzSuffix]="suffixTemplate2" class=" h-[45px] !rounded-lg border">
+                                <input [type]="confirmPasswordVisible ? 'text' : 'password'" nz-input placeholder="Repita la contraseña"
+                                    formControlName="confirmPassword" (ngModelChange)="checkPasswordMatch()"/>
+                            </nz-input-group>
+                            <ng-template #suffixTemplate2>
+                                <nz-icon class="ant-input-password-icon"
+                                    [nzType]="confirmPasswordVisible ? 'eye-invisible' : 'eye'"
+                                    (click)="confirmPasswordVisible = !confirmPasswordVisible" />
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    
+                    <nz-form-item>
+                        <nz-form-label nzFor="signInEmail" class="!pb-1"><span
+                                class="text-[16px] font-bold">Email</span></nz-form-label>
+                        <nz-form-control nzErrorTip="El email es requerido.">
+                            <input class="h-[45px] !rounded-lg border" id="signInEmail" placeholder="Email" nz-input
+                                formControlName="username" type="text" />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label nzFor="signInPhoneNumber" class="!pb-1"><span
+                                class="text-[16px] font-bold">Teléfono</span></nz-form-label>
+                        <nz-form-control nzErrorTip="El teléfono es requerido.">
+                            <input class="h-[45px] !rounded-lg border" id="signInPhoneNumber" placeholder="Teléfono" nz-input
+                                formControlName="phoneNumber" type="text" />
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Debes aceptar los términos y condiciones.">
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" formControlName="acceptTerms" />
+                                <label class="text-[16px] font-bold" for=""> Aceptar<span class="text-(--cb-yellow)  font-bold"> términos y condiciones</span></label>
+                            </div>   
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+
+                <button class=" w-full bg-[#FFD146] cursor-pointer text-white px-4 py-2 rounded-full font-bold max-w-full"
+                    (click)="onSignUp()">
+                    Crear cuenta
+                </button>
+
+                <div class="flex  w-full justify-center gap-2">
+                    <span class="text-[16px] font-bold">
+                        ¿Ya tienes cuenta?
+                    </span>
+                    <span routerLink="/sign-in" class="text-(--cb-yellow) text-[16px] font-bold flex items-center cursor-pointer ">
+                        Inicia sesión
+                    </span>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="w-1/2 md:block !h-full hidden">
+            <img class="w-full h-full object-cover" src="login-bg.webp" alt="">
+        </div>
+
+    </div>
+
+    <app-footer-content></app-footer-content>
+</section>

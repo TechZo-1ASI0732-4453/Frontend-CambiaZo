@@ -7,6 +7,7 @@ import { SignInForm } from '../../forms/sign-in.form';
 import { SHARED_IMPORTS } from '../../../shared';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
 import { FooterContentComponent } from '../../components/footer-content/footer-content.component';
+import { Router } from '@angular/router';
 
 
 
@@ -27,6 +28,7 @@ export class SignInComponent {
   private googleAuthService: GoogleAuthService=inject(GoogleAuthService);
   private classicAuthService: AuthService=inject(AuthService);
   public readonly signInForm: SignInForm=inject(SignInForm);
+  private router:Router = inject(Router);
 
   passwordVisible:boolean=false;
 
@@ -52,6 +54,8 @@ export class SignInComponent {
 
         this.classicAuthService.signIn(email, password).subscribe({
           next: (response) => {
+            localStorage.setItem('token', response.token);
+            this.router.navigate(['/home']);
             console.log('Login successful', response);
           },
           error: (error) => {
@@ -77,6 +81,8 @@ export class SignInComponent {
       next: (response) => {
         this.classicAuthService.signIn(signUpUserDto.username, signUpUserDto.password).subscribe({
           next: (loginResponse) => {
+            localStorage.setItem('token', response.token);
+            this.router.navigate(['/home']);
             console.log('Account created and logged in successfully', loginResponse);
           },
           error: (loginError) => {
@@ -94,6 +100,8 @@ export class SignInComponent {
   signIn(email:string, password:string){
     this.classicAuthService.signIn(email,password).subscribe({
       next: (response)=>{
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/home']);
         console.log('success: ', response);
       },
       error: ()=>{
