@@ -6,12 +6,13 @@ import {SignUpUserDto} from '../../dtos/signUpUser.dto';
 import { SignInForm } from '../../forms/sign-in.form';
 import { SHARED_IMPORTS } from '../../../shared';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
-import { EyeInvisibleOutline, EyeOutline } from '@ant-design/icons-angular/icons';
+import {FooterContentComponent} from '../../component/footer-content/footer-content.component';
 
 
 @Component({
   selector: 'app-sign-in',
   imports: [
+    FooterContentComponent,
     FormsModule,
     SHARED_IMPORTS,
     NzIconModule,
@@ -21,7 +22,7 @@ import { EyeInvisibleOutline, EyeOutline } from '@ant-design/icons-angular/icons
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
-  
+
   private googleAuthService: GoogleAuthService=inject(GoogleAuthService);
   private classicAuthService: AuthService=inject(AuthService);
   public readonly signInForm: SignInForm=inject(SignInForm);
