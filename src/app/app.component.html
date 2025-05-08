@@ -4,8 +4,10 @@
     <!-- <app-header-content *ngIf="shouldShowHeader()"></app-header-content> -->
     
     <!-- Contenido principal que crecerá para llenar el espacio disponible -->
-
+    <app-navbar-content></app-navbar-content>
+    <main class="flex-1 mt-28">
       <router-outlet></router-outlet>
+    </main>
     
     <!-- Footer siempre presente -->
     <!-- <app-footer-content></app-footer-content> -->
