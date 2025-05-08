@@ -10,7 +10,7 @@
 
         <label nzFor="signInEmail" class="!p-1 w"><span class="text-[26px] font-bold">Iniciar Sesión</span></label>
 
-        <button (click)="googleSignIn()" class="w-full flex justify-center border px-4 py-3 rounded-full font-bold border-gray-300">
+        <button (click)="googleSignIn()" class="w-full cursor-pointer flex justify-center border px-4 py-3 rounded-full font-bold border-gray-300">
         <img src="logo-google.webp" class="w-5 h-5 mr-2">
         Iniciar Sesión con Google
       </button>
@@ -62,7 +62,7 @@
         </nz-form-item>
       </form>
 
-      <button  class=" w-full bg-[#FFD146] text-white px-4 py-3 rounded-full font-bold max-w-full" (click)="onClassicSignIn()">
+      <button  class="w-full cursor-pointer bg-[#FFD146] text-white px-4 py-3 rounded-full font-bold max-w-full" (click)="onClassicSignIn()">
       Iniciar sesion
       </button>
 
@@ -70,7 +70,7 @@
           <span class="text-[16px] font-bold">
           ¿No tienes una cuenta?
           </span>
-          <span class="text-[#FFD146] text-[16px] font-bold flex items-center cursor-pointer ">
+          <span routerLink="/sign-up" class="text-[#FFD146] text-[16px] font-bold flex items-center cursor-pointer ">
           Crea tu cuenta
           </span>
         </div>
