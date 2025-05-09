@@ -41,7 +41,7 @@
   overflow: visible;
   display: flex;
   animation: 30s slide infinite linear;
-  -webkit-animation: 30s slide infinite linear;
+  -webkit-animation: 120s slide infinite linear;
 }
 
 

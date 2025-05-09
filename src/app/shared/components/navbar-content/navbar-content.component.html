@@ -27,7 +27,7 @@
         Iniciar Sesión
       </button>
     } @else {
-      <div routerLink="/profile" class="w-16 h-16 rounded-full overflow-hidden border-2 border-(--cb-yellow) cursor-pointer">
+      <div [routerLink]="['/profile', userIdValue]" class="w-16 h-16 rounded-full overflow-hidden border-2 border-(--cb-yellow) cursor-pointer">
         <img [src]="{}" class="w-full h-full object-cover">
       </div>
     }
@@ -54,7 +54,7 @@
         @if(true){
           <li><a routerLink="/sign-in" (click)="toggleMenu()" class=" ">Iniciar Sesión</a></li>
         } @else {
-          <li><a routerLink="/profile" (click)="toggleMenu()" class=" ">Perfil</a></li>
+          <li><a [routerLink]="['/profile', userIdValue]" (click)="toggleMenu()" class=" ">Perfil</a></li>
         }
         <hr/>
       </ul>
