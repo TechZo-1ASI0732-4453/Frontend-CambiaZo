@@ -1,4 +1,5 @@
 import {
+    MenuOutline,
     MenuFoldOutline,
     MenuUnfoldOutline,
     FormOutline,
@@ -7,6 +8,9 @@ import {
     EyeInvisibleOutline,
     EyeOutline,
     GoogleOutline,
+    FilterOutline,
+    ArrowRightOutline,
+    CloseOutline
   } from '@ant-design/icons-angular/icons';
-  
-  export const icons = [GoogleOutline,MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, EyeInvisibleFill, EyeInvisibleOutline, EyeOutline];
+
+  export const icons = [CloseOutline,MenuOutline,ArrowRightOutline,FilterOutline,GoogleOutline,MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, EyeInvisibleFill, EyeInvisibleOutline, EyeOutline];
