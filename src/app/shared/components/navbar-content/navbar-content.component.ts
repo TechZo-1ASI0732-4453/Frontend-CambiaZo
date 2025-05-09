@@ -10,7 +10,15 @@ import {SHARED_IMPORTS} from '../../shared-imports';
 export class NavbarContentComponent {
   openMenu = false;
 
-  constructor() {}
+  isLogged = false;
+
+  constructor() {
+    this.isLogged = localStorage.getItem('token') !== null;
+  }
+  
+  get isLoggedIn(): boolean {
+    return this.isLogged;
+  }
 
   toggleMenu() {
     this.openMenu = !this.openMenu;
