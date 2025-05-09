@@ -1,1 +1,27 @@
-<p>donation-item works!</p>
+@if(ong$ | async; as ong){
+
+    <section class="flex">
+        <div class="flex flex-col">
+            <h1>Detalles</h1>
+            <h1>{{ong.name.toUpperCase()}}</h1>
+            <div>
+                @for(social of ong.socialNetworks; track $index){
+                    <a href="{{social.url}}" rel="noreferrer" target="_blank">
+                        <nz-icon nzType="{{social.name.toLowerCase()}}" nzTheme="outline" />
+                        {{social.name}}
+                    </a>
+                }
+            </div>
+            <h1>Acerca de Nosotros</h1>
+            <p>{{ong.aboutUs}}</p>
+
+            <h1>Misión y visión</h1>
+            <p>{{ong.missionAndVision}}</p>
+
+            <h1>Formas de apoyo</h1>
+            <p>{{ong.supportForm}}</p>
+            
+        </div>
+        <app-donation-side-info [ong]="ong"></app-donation-side-info>
+    </section>
+}
