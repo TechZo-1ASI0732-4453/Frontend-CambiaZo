@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, input, Input, InputSignal} from '@angular/core';
+import {Product} from '../../models/product.model';
 
 @Component({
   selector: 'app-recent-product-card',
@@ -7,5 +8,5 @@ import {Component, Input} from '@angular/core';
   styleUrl: './recent-product-card.component.css'
 })
 export class RecentProductCardComponent {
-  @Input() product: any;
+  product: InputSignal<Product> = input.required()
 }

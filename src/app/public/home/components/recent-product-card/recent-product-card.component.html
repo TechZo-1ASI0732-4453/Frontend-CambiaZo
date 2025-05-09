@@ -1,21 +1,21 @@
 <div class="h-100 w-[240px] flex flex-col  shadow-[0_10px_25px_rgba(0,0,0,0.5)] rounded">
   <!-- Imagen  -->
   <div class="h-[50%] w-full">
-    <img src="{{product.imageUrl}}" class="w-full h-full object-cover" />
+    <img src="{{product().image}}" class="w-full h-full object-cover" />
   </div>
   <!-- Ubicación -->
   <div class="h-[8%] w-full bg-black text-white font-bold flex items-center justify-center">
-    <p>{{product.location}}</p>
+    <p>{{product().location.departmentName}}, {{product().location.districtName}}</p>
   </div>
   <!-- Contenido-->
   <div class="h-[36%] w-full flex flex-col px-3 py-2 bg-white">
-    <p class="font-bold text-lg ">{{product.title}}</p>
-    <p class=" text-gray-500">{{product.category}}</p>
-    <p class="line-clamp-2 overflow-hidden text-ellipsis  leading-tight">{{product.description}}lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. </p>
+    <p class="font-bold text-lg ">{{product().name}}</p>
+    <p class=" text-gray-500">{{product().productCategory.name}}</p>
+    <p class="line-clamp-2 overflow-hidden text-ellipsis  leading-tight">{{product().description}}</p>
     <hr class="border border-(--cb-yellow) mt-2">
-    <p>{{product.exchangeItem}}</p>
+    <p>{{product().desiredObject}}</p>
   </div>
   <!-- Precio -->
   <div class="h-[8%] w-full bg-(--cb-yellow) text-black font-bold flex items-center justify-center">
-    {{product.estimatedPrice }}
+    {{product().price }}
   </div>

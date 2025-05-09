@@ -6,14 +6,14 @@
         <nz-icon nzType="menu" nzTheme="outline" />
       </button>
     </div>
-    <img src="logo-1.webp" alt="Cambiazo" class="h-full object-fill sm:py-4 py-4 cursor-pointer ">
+      <img src="logo-1.webp" alt="Cambiazo" class="h-full object-fill sm:py-4 py-4 cursor-pointer ">
   </div>
 
   <nav class="hidden lg:flex justify-center  h-full items-center pt-7">
     <ul class="flex gap-10 text-lg tracking-wider h-auto">
-      <li><a routerLink="/inicio" title="Inicio" class="!text-white">Inicio</a></li>
-      <li><a routerLink="/donaciones" title="Donaciones" class="!text-white">Donaciones</a></li>
-      <li><a routerLink="/membresías" title="Membresías" class="!text-white">Membresías</a></li>
+      <li><a routerLink="/home" title="Inicio" class="!text-white">Inicio</a></li>
+      <li><a routerLink="/donations" title="Donaciones" class="!text-white">Donaciones</a></li>
+      <li><a routerLink="/memberships" title="Membresías" class="!text-white">Membresías</a></li>
     </ul>
   </nav>
 
@@ -52,7 +52,7 @@
         <li><a (click)="onCallCreatePost()" class="">Publicar</a></li>
         <hr/>
         @if(true){
-          <li><a routerLink="/login" (click)="toggleMenu()" class=" ">Iniciar Sesión</a></li>
+          <li><a routerLink="/sign-in" (click)="toggleMenu()" class=" ">Iniciar Sesión</a></li>
         } @else {
           <li><a routerLink="/profile" (click)="toggleMenu()" class=" ">Perfil</a></li>
         }

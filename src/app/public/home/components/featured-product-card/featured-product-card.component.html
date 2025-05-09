@@ -2,7 +2,7 @@
 <nz-card nzHoverable style="width:240px"  class="!relative overflow-hidden h-80">
   <!-- product image -->
   <div class="absolute inset-0 z-10">
-    <img src="{{product.imageUrl}}" class="object-fit w-full h-full"/>
+    <img src="{{product().image}}" class="object-fit w-full h-full"/>
   </div>
   <!-- bg transparent -->
   <div class="absolute inset-0 z-20">
@@ -10,13 +10,13 @@
   </div>
   <!-- product info -->
   <div class="absolute inset-0 z-30 flex flex-col justify-between m-3">
-    <div class="w-full flex justify-end text-white font-bold">{{product.location}}</div>
+    <div class="w-full flex justify-end text-white font-bold">{{product().location.districtName}}</div>
     <div class="flex flex-col gap-1">
-      <p class="text-[22px] font-bold text-white  w-full">{{ product.title }}</p>
-      <button nz-button nzType="default" class="button !py-0 px-2 w-max !h-auto !text-[11px]" >{{ product.category }}</button>
+      <p class="text-[22px] font-bold text-white  w-full">{{ product().name }}</p>
+      <button nz-button nzType="default" class="button !py-0 px-2 w-max !h-auto !text-[11px]" >{{ product().productCategory.name }}</button>
       <div class="flex flex-col bg-black/60 px-1 py-3.5 w-full items-center">
-        <p class="w-max text-[12px] text-white overflow-hidden whitespace-nowrap text-ellipsis">{{ product.exchangeItem }}</p>
-        <p class="w-max text-[14px] font-bold text-(--cb-yellow)">{{ product.estimatedPrice }}</p>
+        <p class="w-max text-[12px] text-white overflow-hidden whitespace-nowrap text-ellipsis">{{ product().desiredObject }}</p>
+        <p class="w-max text-[14px] font-bold text-(--cb-yellow)">{{ product().price }}</p>
       </div>
     </div>
   </div>

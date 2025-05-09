@@ -5,7 +5,7 @@
     <div id="slider-track" class="flex">
       @for(i of [1,2];track i){
       <div class="featured-products-list">
-        @for(product of products; track product){
+        @for(product of products$|async; track product){
           <div class="mx-1">
           <app-featured-product-card
             class="product-card"
@@ -29,28 +29,13 @@
       <ng-template #suffixIconSearch>
         <nz-icon nzType="search" />
       </ng-template>
-
-      <nz-select ngModel="lucy" class="!w-40">
-        @for (product of products; track product) {
-          <nz-option [nzValue]="product" [nzLabel]="product.title" class="!z-10"></nz-option>
-        }
-      </nz-select>
       <button nz-button class="w-3" (click)="OnOpenFilterMenu()"> <nz-icon nzType="filter" nzTheme="outline" /></button>
-    </div>
-  </section>
-
-  <!-- buttons filtro -->
-  <section class="w-full flex justify-center  p-5">
-    <div class="flex flex-wrap  justify-center w-[60%] gap-2">
-      @for (product of products; track product) {
-        <button nz-button nzType="default" class="button !border-1.5 !font-semibold">Categories</button>
-      }
     </div>
   </section>
 
   <!-- productos recientes -->
   <section class="w-full flex flex-row justify-evenly flex-wrap gap-x-2 gap-y-8 px-15 py-10 ">
-  @for (product of products; track product) {
+  @for (product of filteredProducts$|async; track product) {
     <app-recent-product-card
       [product]="product"
       (dblclick)="onCallProductDetail()"
@@ -61,5 +46,5 @@
 
 
 @if(openFilterMenu) {
-  <app-filter-menu (closeOutput)="onClickCloseMenu()" ></app-filter-menu>
+  <app-filter-menu (closeOutput)="onClickCloseMenu()" (filterCategories)="updateFilters($event)" ></app-filter-menu>
 }
