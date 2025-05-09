@@ -8,7 +8,7 @@ import {Observable, Observer} from 'rxjs';
 @Component({
   standalone: true,
   selector: 'app-publish-page',
-  imports: [SHARED_IMPORTS,NzMessageService,NzMessageService, NzUploadModule],
+  imports: [SHARED_IMPORTS, NzUploadModule],
   providers: [PublishForm],
   templateUrl: './publish-page.component.html',
   styleUrl: './publish-page.component.css'

@@ -25,6 +25,10 @@ export const routes: Routes = [
   {
     path: 'publish',
     loadComponent: () => import('./exchanges/pages/publish-page/publish-page.component').then(m => m.PublishPageComponent)
+  },
+  {
+    path: 'products/:id',
+    loadComponent: () => import('./exchanges/pages/product-details/product-details.component').then(m => m.ProductDetailsComponent)
   }
 
 ];
