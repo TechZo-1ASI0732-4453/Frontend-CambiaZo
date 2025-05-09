@@ -1,0 +1,13 @@
+<section class="flex flex-col min-h-full">
+    <div class="flex flex-col w-full justify-center items-center py-10 px-4 gap-5 text-center ">
+        <h1 class="text-4xl">Contamos con convenios con las ONG's más importantes del Perú</h1>
+        <h3 class="!text-(--cb-yellow) text-3xl">Tenemos muchas opciones para poder contribuir con diferentes sectores de la población</h3>
+    </div>
+    <div>
+        <app-donation-list [categoryOngIdFilters]="filterCategories"></app-donation-list>
+    </div>
+    <div>
+        <app-donation-categories (filters)="onFilterChange($event)" ></app-donation-categories>
+    </div>
+</section>
+

@@ -19,5 +19,4 @@ export class NavbarContentComponent {
   onCallCreatePost() {
     // lógica para publicar
   }
-
 }

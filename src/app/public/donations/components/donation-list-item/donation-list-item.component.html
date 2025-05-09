@@ -1,0 +1,14 @@
+<div class="grid grid-cols-[auto_1fr_auto]">
+    <div>
+        <img src="{{ong().logo}}" alt="">
+    </div>
+    <div >
+        <h1 class="text-2xl font-bold">{{ong().name}}</h1>
+        <p class="text-sm text-gray-500">{{ong().type}}</p>
+    </div>
+    <div>
+        @let ongAddres = ong().address.split(',');
+        <p class="text-sm text-gray-500">{{ongAddres[1] + ', ' + ongAddres[2]}}</p>
+        <button>Detalles</button>
+    </div>
+</div>

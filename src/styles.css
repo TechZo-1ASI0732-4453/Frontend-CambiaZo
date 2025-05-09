@@ -17,6 +17,17 @@ p{
   margin:0;
 }
 
+
+.button-yellow{
+  background-color: var(--cb-yellow);
+  color: #000;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
 .layout {
   display: grid;
   min-height: 100vh;
