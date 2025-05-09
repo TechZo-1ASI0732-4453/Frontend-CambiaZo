@@ -1,0 +1,25 @@
+<dialog class="absolute flex flex-col">
+    <div
+        (click)="onClose()"
+        class="fixed inset-0 bg-black/30 z-40">
+    </div>
+    <div class="text-2xl font-bold">
+        {{title}}
+    </div>
+    <div class="text-xl">
+        {{content}}
+    </div>
+
+    <div>
+        @if(withConfirm){
+            <button class="">
+                Confirmar
+            </button>
+        }
+        @if(withCancel){
+            <button class="" >
+                Cancelar
+            </button>
+        }
+    </div>
+</dialog>

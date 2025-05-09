@@ -1,3 +1,4 @@
+
 <section class="w-full min-h-full bg-[#F8F7F4]">
 
   <!-- destacados (carrusel) -->
@@ -5,12 +6,12 @@
     <div id="slider-track" class="flex">
       @for(i of [1,2];track i){
       <div class="featured-products-list">
-        @for(product of products$|async; track product){
+        @for(product of products(); track product){
           <div class="mx-1">
           <app-featured-product-card
-            class="product-card"
+            class="product-card cursor-pointer"
             [product]="product"
-            (dblclick)="onCallProductDetail()"
+            (click)="onClickProductCard(product.id)"
           ></app-featured-product-card>
           </div>
         }
@@ -35,14 +36,19 @@
 
   <!-- productos recientes -->
   <section class="w-full flex flex-row justify-evenly flex-wrap gap-x-2 gap-y-8 px-15 py-10 ">
-  @for (product of filteredProducts$|async; track product) {
-    <app-recent-product-card
-      [product]="product"
-      (dblclick)="onCallProductDetail()"
-    ></app-recent-product-card>
-  }
+    @for (product of filteredProducts(); track product) {
+      <app-recent-product-card
+        [product]="product"
+        class="cursor-pointer"
+        (click)="onClickProductCard(product.id)"
+      ></app-recent-product-card>
+    }
   </section>
 </section>
+
+@if(showLoginModal()){
+
+}
 
 
 @if(openFilterMenu) {

@@ -10,7 +10,7 @@
     </div>
 
     <nz-select [(ngModel)]="selectedCategoryId" class="w-full">
-      @for(category of productCategories$|async; track category) {
+      @for(category of productCategories(); track category) {
       <nz-option [nzValue]="category.id" nzLabel="{{category.name}}"></nz-option>
       }
     </nz-select>
