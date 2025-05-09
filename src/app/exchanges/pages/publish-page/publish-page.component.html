@@ -1,0 +1,117 @@
+<section class="w-full flex min-h-full bg-[#F8F7F4]">
+  <div class="border w-full">
+      <form [nzLayout]="'vertical'" [formGroup]="publishForm.form"  nz-form class="bg-white !px-5">
+
+        <nz-form-item>
+          <nz-form-label nzFor="country" >Pais</nz-form-label>
+          <nz-form-control nzErrorTip="Seleccione un Pais">
+            <nz-select id="country" formControlName="country" nzPlaceHolder="Seleccione su Pais">
+              <nz-option nzValue="male" nzLabel="male"></nz-option>
+              <nz-option nzValue="female" nzLabel="female"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="department" >Departamento</nz-form-label>
+          <nz-form-control nzErrorTip="Seleccione un departamento">
+            <nz-select id="department" formControlName="department" nzPlaceHolder="Seleccione su Departamento">
+              <nz-option nzValue="male" nzLabel="male"></nz-option>
+              <nz-option nzValue="female" nzLabel="female"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="district" >Distrito</nz-form-label>
+          <nz-form-control  nzErrorTip="Seleccione un distrito">
+            <nz-select id="district" formControlName="district" nzPlaceHolder="Seleccione su Distrito">
+              <nz-option nzValue="male" nzLabel="male"></nz-option>
+              <nz-option nzValue="female" nzLabel="female"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+
+      </form >
+      <form [nzLayout]="'horizontal'" nz-form class="bg-white">
+        <nz-form-item>
+          <nz-form-label nzFor="boost" >Boost de Visibilidad</nz-form-label>
+            <nz-switch  formControlName="boost"></nz-switch>
+        </nz-form-item>
+        <div>¡Activa tu boost! Al hacerlo, tu producto será destacado en
+          la página principal durante un día, aumentando tus oportunidades
+          de encontrar un intercambiador.</div>
+
+      </form>
+    <button class="w-full cursor-pointer bg-(--cb-yellow) text-white px-4 rounded-full font-bold max-w-full">Publicar</button>
+  </div>
+  <div class="border w-full">
+    <form [nzLayout]="'vertical'" nz-form class="bg-white">
+
+      <h1>Información de tu Publicación</h1>
+
+      <nz-form-item>
+        <nz-form-label nzFor="productCategory" >Categoría</nz-form-label>
+        <nz-form-control nzErrorTip="Seleccione una Categoria">
+          <nz-select id="productCategory" formControlName="productCategory" nzPlaceHolder="Seleccione una Categoria">
+            <nz-option nzValue="male" nzLabel="male"></nz-option>
+            <nz-option nzValue="female" nzLabel="female"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzFor="productName" class="!pb-1"><span
+          class="text-[16px] font-bold">Nombre</span></nz-form-label>
+        <nz-form-control nzErrorTip="El nombre es requerido.">
+          <input class="h-[45px] !rounded-lg border" id="productName" placeholder="Nombre del producto" nz-input
+                 formControlName="productName" type="text"  />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Describe tu producto</nz-form-label>
+        <nz-form-control nzHasFeedback nzErrorTip="La descripcion es requerida">
+          <nz-textarea-count [nzMaxCharacterCount]="2000">
+            <textarea formControlName="descripcion" nz-input rows="2" placeholder="Escriba una descripcion"></textarea>
+          </nz-textarea-count>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>¿Que quieres a Cambio?</nz-form-label>
+        <nz-form-control nzHasFeedback nzErrorTip="La informacion es requerida">
+          <nz-textarea-count [nzMaxCharacterCount]="2000">
+            <textarea formControlName="desiredOjbect" nz-input rows="2" placeholder="Escriba que producto quiere"></textarea>
+          </nz-textarea-count>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-input-number>
+        <span nzInputAddonBefore>$</span>
+      </nz-input-number>
+
+    </form>
+    <form [nzLayout]="'vertical'" nz-form class="bg-white">
+      <h1>Imágenes</h1>
+      <nz-upload
+        class="avatar-uploader"
+        nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        nzName="avatar"
+        nzListType="picture-card"
+        [nzShowUploadList]="false"
+        [nzBeforeUpload]="beforeUpload"
+        (nzChange)="handleChange($event)"
+      >
+        @if (!avatarUrl) {
+          <nz-icon class="upload-icon" [nzType]="loading ? 'loading' : 'plus'" />
+          <div class="ant-upload-text">Upload</div>
+        } @else {
+          <img [src]="avatarUrl" style="width: 100%" />
+        }
+      </nz-upload>
+    </form>
+
+  </div>
+</section>

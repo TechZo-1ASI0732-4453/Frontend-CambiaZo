@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {SHARED_IMPORTS} from '../../shared-imports';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar-content',
@@ -8,14 +9,15 @@ import {SHARED_IMPORTS} from '../../shared-imports';
   styleUrl: './navbar-content.component.css'
 })
 export class NavbarContentComponent {
-  openMenu = false;
 
+  openMenu = false;
   isLogged = false;
+  private router:Router = inject(Router);
 
   constructor() {
     this.isLogged = localStorage.getItem('token') !== null;
   }
-  
+
   get isLoggedIn(): boolean {
     return this.isLogged;
   }
@@ -25,6 +27,12 @@ export class NavbarContentComponent {
   }
 
   onCallCreatePost() {
-    // lógica para publicar
+    this.router.navigate(['/publish']);
+  }
+  onCallLogin() {
+    this.router.navigate(['/sign-in']);
+  }
+  onCallHome() {
+    this.router.navigate(['/home']);
   }
 }

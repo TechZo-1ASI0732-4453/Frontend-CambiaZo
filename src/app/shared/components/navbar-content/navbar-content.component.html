@@ -6,7 +6,7 @@
         <nz-icon nzType="menu" nzTheme="outline" />
       </button>
     </div>
-      <img src="logo-1.webp" alt="Cambiazo" class="h-full object-fill sm:py-4 py-4 cursor-pointer ">
+      <img (click)="onCallHome()" src="logo-1.webp" alt="Cambiazo" class="h-full object-fill sm:py-4 py-4 cursor-pointer ">
   </div>
 
   <nav class="hidden lg:flex justify-center  h-full items-center pt-7">
@@ -23,7 +23,7 @@
     </button>
 
     @if (!isLoggedIn) {
-      <button class="sm:px-5 px-3 py-2  bg-white !text-black rounded-full hover:bg-gray-200 cursor-pointer">
+      <button (click)="onCallLogin()" class="sm:px-5 px-3 py-2  bg-white !text-black rounded-full hover:bg-gray-200 cursor-pointer">
         Iniciar Sesión
       </button>
     } @else {
@@ -52,9 +52,9 @@
         <li><a (click)="onCallCreatePost()" class="">Publicar</a></li>
         <hr/>
         @if(true){
-          <li><a routerLink="/sign-in" (click)="toggleMenu()" class=" ">Iniciar Sesión</a></li>
+          <li><a routerLink="/sign-in" (click)="toggleMenu()">Iniciar Sesión</a></li>
         } @else {
-          <li><a routerLink="/profile" (click)="toggleMenu()" class=" ">Perfil</a></li>
+          <li><a routerLink="/profile" (click)="toggleMenu()">Perfil</a></li>
         }
         <hr/>
       </ul>
