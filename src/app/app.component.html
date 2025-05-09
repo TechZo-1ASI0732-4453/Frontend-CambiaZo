@@ -3,8 +3,10 @@
   <!-- <app-header-content *ngIf="shouldShowHeader()"></app-header-content> -->
 
   <!-- Contenido principal que crecerá para llenar el espacio disponible -->
-  <app-navbar-content></app-navbar-content>
-  <main class="flex-1 mt-20">
+  @if(!isLogged){
+    <app-navbar-content></app-navbar-content>
+  }
+  <main [ngClass]="{'mt-20': !isLogged}" class="flex-1">
     <router-outlet></router-outlet>
   </main>
 

@@ -46,5 +46,8 @@
 
 
 @if(openFilterMenu) {
-  <app-filter-menu (closeOutput)="onClickCloseMenu()" (filterCategories)="updateFilters($event)" ></app-filter-menu>
+  <app-filter-menu
+    (closeOutput)="onClickCloseMenu()"
+    (filterCategories)="updateFilters($event)">
+  </app-filter-menu>
 }
