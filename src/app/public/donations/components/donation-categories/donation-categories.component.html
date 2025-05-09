@@ -1,0 +1,15 @@
+<div class="bg-white p-2 rounded-2xl drop-shadow-2xl w-fit">
+    <h1 class="text-xl">Categorías</h1>
+    <div class="m-top-4 flex flex-col items-start gap-2">
+        @for(category of categoriesOngs$ | async; track category.id ){
+            <label nz-checkbox [ngModel]="selectedCategories.includes(category.id)"
+                (ngModelChange)="onFilterChange(category.id, $event)">
+                {{category.name}}
+            </label>
+        }
+    </div>
+    <div class="mt-4 flex flex-col gap-2">
+        <button class="button-yellow" (click)="onClearFilters()">Limpiar</button>
+        <button class="button-yellow" (click)="onApplyFilters()">Filtrar</button>
+    </div>
+</div>

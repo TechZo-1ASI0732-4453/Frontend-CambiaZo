@@ -1,0 +1,15 @@
+
+@if (filteredOngs$ | async; as ongs) {
+  <div>
+    <div>
+      <h1>Nuevas ONG's</h1>
+      <p>Se han añadido {{ ongs.length }}</p>
+    </div>
+    @for (ong of ongs; track $index) {
+      <app-donation-list-item [ong]="ong"></app-donation-list-item>
+    }
+  </div>
+}
+
+
+
