@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, effect, inject, input, InputSignal, output, signal, Signal, WritableSignal} from '@angular/core';
 import {FeaturedProductCardComponent} from '../../components/featured-product-card/featured-product-card.component';
 import {RecentProductCardComponent} from '../../components/recent-product-card/recent-product-card.component';
 import {SHARED_IMPORTS} from '../../../../shared';
 import {FilterMenuComponent} from '../../components/filter-menu/filter-menu.component';
+import {HomeProductsService} from '../../services/home-products.service';
+import {AsyncPipe} from '@angular/common';
+import {combineLatest, map, Observable} from 'rxjs';
+import {Ong} from '../../../donations/models/ong.model';
+import {toObservable} from '@angular/core/rxjs-interop';
+import {Product} from '../../models/product.model';
 
 @Component({
   selector: 'app-home-page',
   imports: [
+    AsyncPipe,
     SHARED_IMPORTS,
     FeaturedProductCardComponent,
     RecentProductCardComponent,
@@ -18,21 +25,25 @@ import {FilterMenuComponent} from '../../components/filter-menu/filter-menu.comp
 
 export class HomePageComponent {
 
+
+  productCategoryIdFilters: WritableSignal<number> = signal(0);
+
+  private readonly homeProductsService: HomeProductsService = inject(HomeProductsService);
+  public products$ = this.homeProductsService.getProducts();
+
+  public filteredProducts$: Observable<Product[]> = combineLatest([
+    this.products$,
+    toObservable(this.productCategoryIdFilters)
+  ]).pipe(
+    map(([products, filters]) =>
+      filters
+        ? products.filter(p => p.productCategory.id === filters)
+        : products
+    )
+  );
+
   // Variables para el filtro
   openFilterMenu= false;
-
-  products: ProductCard[] = [
-    new ProductCard('', 'La Molina', 'Cybertruck', 'Vehículos', 'Intercambio por una Laptop', 'S/ 1250 valor aprox.',""),
-    new ProductCard('', 'Miraflores', 'Bicicleta Montañera', 'Deportes', 'Cambio por parlante JBL', 'S/ 850 valor aprox.',""),
-    new ProductCard('', 'Surco', 'PlayStation 5', 'Tecnología', 'Acepto iPhone 11', 'S/ 2000 valor aprox.',""),
-     new ProductCard('', 'San Isidro', 'Cámara Canon EOS', 'Fotografía', 'Por una tablet Android', 'S/ 1700 valor aprox.',""),
-    new ProductCard('', 'Callao', 'Zapatillas Nike Air', 'Moda', 'Intercambio por smartwatch', 'S/ 600 valor aprox.',""),
-    new ProductCard('', 'Barranco', 'Guitarra Eléctrica', 'Instrumentos', 'Acepto consola de juegos', 'S/ 900 valor aprox.',""),
-    new ProductCard('', 'Jesús María', 'Monitor LG 4K', 'Tecnología', 'Cambio por silla gamer', 'S/ 1150 valor aprox.',""),
-    new ProductCard('', 'San Borja', 'Moto Eléctrica', 'Vehículos', 'Acepto drones o cámaras', 'S/ 3200 valor aprox.',""),
-    new ProductCard('', 'Pueblo Libre', 'Tablet Samsung Galaxy', 'Tecnología', 'Cambio por audífonos Bose', 'S/ 980 valor aprox.',""),
-    new ProductCard('', 'Los Olivos', 'Sofá Recliner', 'Hogar', 'Acepto TV 40 pulgadas', 'S/ 1350 valor aprox.',"")
-  ];
 
   onCallProductDetail() {
     // logica para ver detalles del producto
@@ -45,18 +56,19 @@ export class HomePageComponent {
   onClickCloseMenu() {
     this.openFilterMenu = false;
   }
+
+  updateFilters(filters: number) {
+    this.productCategoryIdFilters.update(() => filters);
+    this.openFilterMenu = false;
+    console.log(filters);
+  }
+
+  constructor() {
+    effect(() => {
+      const filters = this.productCategoryIdFilters();
+      console.log(filters);
+    });
+  }
 }
 
-export class ProductCard {
-  constructor(
-    public imageUrl: string,
-    public location: string,
-    public title: string,
-    public category: string,
-    public exchangeItem: string,
-    public estimatedPrice: string,
-    public description: string,
-  ) {}
 
-
-}

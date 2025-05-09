@@ -4,9 +4,19 @@
     class="fixed inset-0 bg-black bg-black/30 z-40">
   </div>
 
-  <div class="fixed top-0 right-0 w-1/5 h-full bg-white z-40">
+  <div class="fixed top-0 right-0 w-1/5 h-full bg-white z-40 overflow-y-auto">
     <div class=" flex h-25 pl-4">
       <button class="w-5" (click)="onClickMenu()"><nz-icon nzType="arrow-right" nzTheme="outline" /></button>
     </div>
+
+    <nz-select [(ngModel)]="selectedCategoryId" (ngModelChange)="onSelectChanges($event)" class="w-full">
+      @for(category of productCategories$|async; track category) {
+      <nz-option nzValue="{{category.id}}" nzLabel="{{category.name}}"></nz-option>
+      }
+    </nz-select>
+
+    <button nz-button (click)="onClickFilter()"><nz-icon nzType="filter" nzTheme="outline"/> Filtrar</button>
   </div>
 </section>
+
+
