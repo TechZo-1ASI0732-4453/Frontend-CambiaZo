@@ -1,29 +1,29 @@
 #menu li a{
-    color: #fff !important;
-    text-decoration: none;
-    font-size: large !important;
-  }
-  
-  #menu li{
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-    padding-left: 1.5rem;
-  }
-  #menu li a:hover{
-    text-decoration: none;
-  
-  }
-  #menu li:hover{
-    background-color: var(--cb-yellow);
-    transition: all 0.4s ease-in-out;
-    animation-fill-mode: forwards;
-    border-radius: 0 0.5rem 0.5rem 0;
-  }
-  
-  #menu hr{
-    border: 1px solid  rgba(255, 255, 255, 0.2);
-    margin: 0;
-    width: 100%;
-    padding: 0;
-  }
+  color: #fff !important;
+  text-decoration: none;
+  font-size: large !important;
+}
+
+#menu li{
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem;
+}
+#menu li a:hover{
+  text-decoration: none;
+
+}
+#menu li:hover{
+  background-color: var(--cb-yellow);
+  transition: all 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+#menu hr{
+  border: 1px solid  rgba(255, 255, 255, 0.2);
+  margin: 0;
+  width: 100%;
+  padding: 0;
+}

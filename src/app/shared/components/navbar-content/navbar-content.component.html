@@ -1,63 +1,63 @@
-<header class="w-full bg-black text-white font-bold fixed z-20  flex justify-between  items-center pl-2 sm:pr-[2%] pr-4" >
+<header class="w-full bg-black text-white font-bold fixed z-40  flex justify-between  items-center pl-2 sm:pr-[2%] pr-4" >
 
-    <div class="h-28 flex items-center ">
-      <div class="lg:hidden h-full w-10 flex items-center justify-center">
-        <button (click)="toggleMenu()" class="focus:outline-none w-13 y-15 cursor-pointer ">
-          E
-        </button>
-      </div>
-      <img src="logo-1.webp" alt="Cambiazo" class="h-full object-fill sm:py-4 py-9 cursor-pointer ">
+  <div class="h-20 flex items-center ">
+    <div class="lg:hidden h-full w-10 flex items-center justify-center">
+      <button (click)="toggleMenu()" class="w-13 y-15 cursor-pointer !text-white">
+        <nz-icon nzType="menu" nzTheme="outline" />
+      </button>
     </div>
-  
-    <nav class="hidden lg:flex justify-center  h-full items-center pt-7">
-      <ul class="flex gap-10 text-lg tracking-wider h-auto">
-        <li><a routerLink="/inicio" title="Inicio" class="!text-white">Inicio</a></li>
-        <li><a routerLink="/donaciones" title="Donaciones" class="!text-white">Donaciones</a></li>
-        <li><a routerLink="/membresías" title="Membresías" class="!text-white">Membresías</a></li>
+    <img src="logo-1.webp" alt="Cambiazo" class="h-full object-fill sm:py-4 py-4 cursor-pointer ">
+  </div>
+
+  <nav class="hidden lg:flex justify-center  h-full items-center pt-7">
+    <ul class="flex gap-10 text-lg tracking-wider h-auto">
+      <li><a routerLink="/inicio" title="Inicio" class="!text-white">Inicio</a></li>
+      <li><a routerLink="/donaciones" title="Donaciones" class="!text-white">Donaciones</a></li>
+      <li><a routerLink="/membresías" title="Membresías" class="!text-white">Membresías</a></li>
+    </ul>
+  </nav>
+
+  <div class="flex items-center gap-4">
+    <button (click)="onCallCreatePost()" class="hidden lg:flex px-5 py-2 border border-(--cb-yellow) !text-(--cb-yellow) rounded-full hover:bg-(--cb-yellow) hover:!text-white cursor-pointer ">
+      Publicar
+    </button>
+
+    @if (true) {
+      <button class="sm:px-5 px-3 py-2  bg-white !text-black rounded-full hover:bg-gray-200 cursor-pointer">
+        Iniciar Sesión
+      </button>
+    } @else {
+      <div routerLink="/profile" class="w-16 h-16 rounded-full overflow-hidden border-2 border-(--cb-yellow) cursor-pointer">
+        <img [src]="{}" class="w-full h-full object-cover">
+      </div>
+    }
+  </div>
+</header>
+
+@if(openMenu) {
+  <div class="fixed top-0 left-0 w-1/2 h-full bg-black z-40">
+    <div class=" flex h-25 pl-4">
+      <button (click)="toggleMenu()" class="!text-white"><nz-icon nzType="close" nzTheme="outline" /></button>
+    </div>
+
+    <nav>
+      <ul id="menu" class="flex flex-col">
+        <hr/>
+        <li><a routerLink="/home" (click)="toggleMenu()">Inicio</a></li>
+        <hr/>
+        <li><a routerLink="/donations" (click)="toggleMenu()">Donaciones</a></li>
+        <hr/>
+        <li><a routerLink="/memberships" (click)="toggleMenu()">Membresías</a></li>
+        <hr/>
+        <li><a (click)="onCallCreatePost()" class="">Publicar</a></li>
+        <hr/>
+        @if(true){
+          <li><a routerLink="/login" (click)="toggleMenu()" class=" ">Iniciar Sesión</a></li>
+        } @else {
+          <li><a routerLink="/profile" (click)="toggleMenu()" class=" ">Perfil</a></li>
+        }
+        <hr/>
       </ul>
     </nav>
-  
-    <div class="flex items-center gap-4">
-      <button (click)="onCallCreatePost()" class="hidden lg:flex px-5 py-2 border border-(--cb-yellow) !text-(--cb-yellow) rounded-full hover:bg-(--cb-yellow) hover:!text-white cursor-pointer ">
-        Publicar
-      </button>
-  
-      @if (true) {
-        <button class="sm:px-5 px-3 py-2  bg-white !text-black rounded-full hover:bg-gray-200 cursor-pointer">
-          Iniciar Sesión
-        </button>
-      } @else {
-        <div routerLink="/profile" class="w-16 h-16 rounded-full overflow-hidden border-2 border-(--cb-yellow) cursor-pointer">
-          <img [src]="{}" class="w-full h-full object-cover">
-        </div>
-      }
-    </div>
-  </header>
-  
-  @if(openMenu) {
-    <div class="fixed top-0 left-0 w-1/2 h-full bg-black z-30">
-      <div class=" flex h-25 pl-4">
-        <button (click)="toggleMenu()" class="!text-(--cb-yellow)">&times;</button>
-      </div>
-  
-      <nav>
-        <ul id="menu" class="flex flex-col">
-          <hr/>
-          <li><a routerLink="/home" (click)="toggleMenu()">Inicio</a></li>
-          <hr/>
-          <li><a routerLink="/donations" (click)="toggleMenu()">Donaciones</a></li>
-          <hr/>
-          <li><a routerLink="/memberships" (click)="toggleMenu()">Membresías</a></li>
-          <hr/>
-          <li><a (click)="onCallCreatePost()" class="">Publicar</a></li>
-          <hr/>
-          @if(true){
-            <li><a routerLink="/login" (click)="toggleMenu()" class=" ">Iniciar Sesión</a></li>
-          } @else {
-            <li><a routerLink="/profile" (click)="toggleMenu()" class=" ">Perfil</a></li>
-          }
-          <hr/>
-        </ul>
-      </nav>
-    </div>
-  }
+  </div>
+}

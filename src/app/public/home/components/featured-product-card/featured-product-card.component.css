@@ -1,0 +1,13 @@
+::ng-deep .button:hover {
+  background: var(--cb-yellow) !important;
+  color: #fff !important;
+  border: 1.5px solid var(--cb-yellow) !important;
+  transition: all 0.4s ease-in-out;
+}
+
+::ng-deep .button {
+  color: var(--cb-yellow) !important;
+  border-radius: 0.5rem !important;
+  border: 1.5px solid var(--cb-yellow) !important;
+  background: transparent !important;
+}

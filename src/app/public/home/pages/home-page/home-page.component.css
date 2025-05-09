@@ -1,0 +1,48 @@
+::ng-deep .button {
+  color: var(--cb-yellow) !important;
+  border-radius: 0.5rem !important;
+  border: 1.5px solid var(--cb-yellow) !important;
+  background: transparent !important;
+}
+
+::ng-deep .button:hover {
+  background: var(--cb-yellow) !important;
+  color: #fff !important;
+  border: 1.5px solid var(--cb-yellow) !important;
+  transition: all 0.4s ease-in-out;
+}
+
+::ng-deep .card{
+  padding: 0;
+}
+
+@keyframes slide{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}
+
+#container-slider{
+  overflow: hidden;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.product-card:hover {
+  transform: scale(1.7);
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.featured-products-list{
+  overflow: visible;
+  display: flex;
+  animation: 30s slide infinite linear;
+  -webkit-animation: 30s slide infinite linear;
+}
+
+
+
