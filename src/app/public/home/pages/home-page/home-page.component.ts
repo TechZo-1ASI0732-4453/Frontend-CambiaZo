@@ -31,18 +31,16 @@ export class HomePageComponent {
   private readonly homeProductsService: HomeProductsService = inject(HomeProductsService);
   public products$ = this.homeProductsService.getProducts();
 
-  public filteredProducts$: Observable<Product[]> = combineLatest([
+  filteredProducts$ = combineLatest([
     this.products$,
     toObservable(this.productCategoryIdFilters)
   ]).pipe(
-    map(([products, filters]) =>
-      filters
-        ? products.filter(p => p.productCategory.id === filters)
-        : products
+    map(([products, id]) =>
+      id ? products.filter(p => p.productCategory.id === +id) : products
     )
   );
 
-  // Variables para el filtro
+
   openFilterMenu= false;
 
   onCallProductDetail() {
@@ -57,16 +55,14 @@ export class HomePageComponent {
     this.openFilterMenu = false;
   }
 
-  updateFilters(filters: number) {
-    this.productCategoryIdFilters.update(() => filters);
+  updateFilters(id: number) {
+    this.productCategoryIdFilters.set(+id);
     this.openFilterMenu = false;
-    console.log(filters);
   }
 
   constructor() {
     effect(() => {
       const filters = this.productCategoryIdFilters();
-      console.log(filters);
     });
   }
 }

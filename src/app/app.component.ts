@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {NavbarContentComponent} from './shared/components/navbar-content/navbar-content.component';
 import { FooterContentComponent } from './shared/components/footer-content/footer-content.component';
@@ -13,5 +13,8 @@ import { FooterContentComponent } from './shared/components/footer-content/foote
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Cambiazo-Frontend';
+  @HostListener('window:beforeunload', ['$event'])
+  clearCatIdOnReload() {
+    localStorage.setItem('catId', '0');
+  }
 }

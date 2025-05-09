@@ -12,13 +12,16 @@ export class FilterMenuComponent {
 
   private readonly homeProductsService: HomeProductsService = inject(HomeProductsService);
   productCategories$ = this.homeProductsService.getProductCategories();
-  selectedCategoryId: number = 0;
+  selectedCategoryId: number = parseInt(localStorage.getItem('catId') ?? '0', 10);
 
   closeOutput: OutputEmitterRef<boolean> = output();
   filterCategories: OutputEmitterRef<number> = output();
 
   onClickMenu = () => this.closeOutput.emit(false);
-  onClickFilter = () => this.filterCategories.emit(this.selectedCategoryId);
+  onClickFilter = () => {
+    localStorage.setItem('catId', this.selectedCategoryId.toString());
+    this.filterCategories.emit(this.selectedCategoryId);
+  }
 
   onSelectChanges(a: any):any {
     console.log(a);
