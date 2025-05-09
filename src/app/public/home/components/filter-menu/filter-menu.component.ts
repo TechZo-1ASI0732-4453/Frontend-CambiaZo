@@ -22,9 +22,4 @@ export class FilterMenuComponent {
     localStorage.setItem('catId', this.selectedCategoryId.toString());
     this.filterCategories.emit(this.selectedCategoryId);
   }
-
-  onSelectChanges(a: any):any {
-    console.log(a);
-  }
-
 }
