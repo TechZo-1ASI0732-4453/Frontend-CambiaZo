@@ -1,0 +1,4 @@
+
+@if(user$ | async; as user){
+    <app-profile-sidebar [name]="user.name" (outputSelected)="receiveSelectedIndex($event)"></app-profile-sidebar>
+}

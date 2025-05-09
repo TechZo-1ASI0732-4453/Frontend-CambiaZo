@@ -1,0 +1,13 @@
+<div class="bg-white rounded-lg shadow-2xl p-4 flex flex-col gap-4">
+    <div class="w-fit">
+        <h1 class="text-center">Hola {{name()}}</h1>
+    </div>
+    <div class="w-fit flex flex-col gap-2">
+        @for(section of iconNamesArr; track $index; let idx = $index){
+            <div [ngClass]="{'tag-selected': selected===idx }" (click)="onSelect(idx)" class="tag">
+                <nz-icon nzType="{{section.icon}}" nzTheme="outline" />
+                {{section.name}}
+            </div>
+        }
+    </div>
+</div>

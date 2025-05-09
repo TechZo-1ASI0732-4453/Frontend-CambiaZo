@@ -55,6 +55,7 @@ export class SignInComponent {
         this.classicAuthService.signIn(email, password).subscribe({
           next: (response) => {
             localStorage.setItem('token', response.token);
+            localStorage.setItem('userId', response.id);
             this.router.navigate(['/home']);
             console.log('Login successful', response);
           },
@@ -82,6 +83,7 @@ export class SignInComponent {
         this.classicAuthService.signIn(signUpUserDto.username, signUpUserDto.password).subscribe({
           next: (loginResponse) => {
             localStorage.setItem('token', response.token);
+            localStorage.setItem('userId', response.id);
             this.router.navigate(['/home']);
             console.log('Account created and logged in successfully', loginResponse);
           },
@@ -101,6 +103,7 @@ export class SignInComponent {
     this.classicAuthService.signIn(email,password).subscribe({
       next: (response)=>{
         localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.id);
         this.router.navigate(['/home']);
         console.log('success: ', response);
       },

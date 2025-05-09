@@ -1,0 +1,17 @@
+.tag{
+    color: black;
+    padding: 20px 10px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.tag:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.tag-selected{
+    background-color: black;
+    color: white;
+}
