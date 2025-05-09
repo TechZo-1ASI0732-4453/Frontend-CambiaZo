@@ -1,1 +1,65 @@
-<p>home-page works!</p>
+<section class="w-full min-h-full bg-[#F8F7F4]">
+
+  <!-- destacados (carrusel) -->
+  <section id="container-slider" class="w-[99vw]">
+    <div id="slider-track" class="flex">
+      @for(i of [1,2];track i){
+      <div class="featured-products-list">
+        @for(product of products; track product){
+          <div class="mx-1">
+          <app-featured-product-card
+            class="product-card"
+            [product]="product"
+            (dblclick)="onCallProductDetail()"
+          ></app-featured-product-card>
+          </div>
+        }
+      </div>
+      }
+    </div>
+  </section>
+
+
+  <!--search bar-->
+  <section class="flex w-full py-5 justify-center">
+    <div class="w-[60%] flex">
+      <nz-input-group [nzPrefix]="suffixIconSearch" class="shadow-md focus:!border-yellow-500 focus:!ring-yellow-500 hover:!border-yellow-400">
+        <input type="text" nz-input placeholder="Buscar..." class="" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <nz-icon nzType="search" />
+      </ng-template>
+
+      <nz-select ngModel="lucy" class="!w-40">
+        @for (product of products; track product) {
+          <nz-option [nzValue]="product" [nzLabel]="product.title" class="!z-10"></nz-option>
+        }
+      </nz-select>
+      <button nz-button class="w-3" (click)="OnOpenFilterMenu()"> <nz-icon nzType="filter" nzTheme="outline" /></button>
+    </div>
+  </section>
+
+  <!-- buttons filtro -->
+  <section class="w-full flex justify-center  p-5">
+    <div class="flex flex-wrap  justify-center w-[60%] gap-2">
+      @for (product of products; track product) {
+        <button nz-button nzType="default" class="button !border-1.5 !font-semibold">Categories</button>
+      }
+    </div>
+  </section>
+
+  <!-- productos recientes -->
+  <section class="w-full flex flex-row justify-evenly flex-wrap gap-x-2 gap-y-8 px-15 py-10 ">
+  @for (product of products; track product) {
+    <app-recent-product-card
+      [product]="product"
+      (dblclick)="onCallProductDetail()"
+    ></app-recent-product-card>
+  }
+  </section>
+</section>
+
+
+@if(openFilterMenu) {
+  <app-filter-menu (closeOutput)="onClickCloseMenu()" ></app-filter-menu>
+}
