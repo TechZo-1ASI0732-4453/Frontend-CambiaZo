@@ -1,0 +1,36 @@
+<div class="flex flex-col">
+    <div class="flex flex-col">
+        <img src="{{ong().logo}}" alt="">
+        <h2 class="text-2xl font-bold">{{ong().name}}</h2>
+        <a href="{{ong().website}}" rel="noreferrer" target="_blank" class="button-yellow">Visitar sitio web</a>
+    </div>
+    <div>
+        <div>
+            <h1>Categoría</h1>
+            <p>{{ong().categoryOngId.name}}</p>
+        </div>
+        <div>
+            <h1>Dirección</h1>
+            <p><nz-icon nzType="environment" nzTheme="outline" />{{ong().address}}</p>
+        </div>
+        <div>
+            <h1>Teléfono de Contacto</h1>
+            <p>{{ong().phone}}</p>
+        </div>
+        <div>
+            <h1>Correo electrónico</h1>
+            <p>{{ong().email}}</p>
+        </div>
+        <div>
+            <h1>Número de Cuenta Bancaria</h1>
+            @for(account of ong().accountNumbers; track $index){
+                <p>{{account.name}}: {{account.account}}</p>
+                <p>CCI: {{account.cci}}</p>
+            }
+        </div>
+        <div>
+            <h1>Horario de atención</h1>
+            <p>{{ong().schedule}}</p>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,10 @@
 import { Component, input, InputSignal, Signal } from '@angular/core';
 import { Ong } from '../../models/ong.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-donation-list-item',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './donation-list-item.component.html',
   styleUrl: './donation-list-item.component.css'
 })
