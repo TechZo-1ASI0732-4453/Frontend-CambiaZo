@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { SignInUser } from '../../auth/models/signInUser.model';
 import { Observable } from 'rxjs';
+import { Product } from '../../public/home/models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class UserService {
   
   getUserInfoById(id: number): Observable<SignInUser> {
     return this.http.get<SignInUser>(`${this.apiUrl}/users/${id}`);
+  }
+
+  getProductByUserId(id: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/products/user/${id}`);
   }
 }
